@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // --- Declare and initialise loop control variables ---
+    // --- Execute the loop body (While Loop) ---
+    int countdown = 3; 
+    cout << "Starting while loop countdown:" << endl;
+    while (countdown > 0) {
+        cout << countdown << "\n";
+        countdown--; // Decrementing the control variable
+    }
+
+    // --- Declare and initialise do-while loop ---
+    int i = 1; 
+    cout << "\nStarting do-while loop:" << endl;
+    do {
+        cout << "i is " << i << "\n";
+        i++;
+    } while (i < 3); // Executes at least once even if the condition is false
+
+    // --- Create nested do-while loop ---
+    int row = 1;
+    cout << "\nStarting nested do-while loops:" << endl;
+    do {
+        int col = 1; // Initializing inner control variable
+        do {
+            cout << "Row " << row << " Col " << col << " | ";
+            col++;
+        } while (col <= 2); // Inner loop condition
+        
+        cout << endl;
+        row++;
+    } while (row <= 2); // Outer loop condition
+
+    cout << "\nHappy New Year!!\n";
+
+    return 0;
+}

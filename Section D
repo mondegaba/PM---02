@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    double num1, num2;
+    char op;
+
+    cout << "--- 🎤 DRAKE'S STUDIO CALCULATOR ---" << endl;
+    cout << "Enter first number: ";
+    cin >> num1;
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
+    cout << "Enter second number: ";
+    cin >> num2;
+
+    cout << "-----------------------------------" << endl;
+
+    if (op == '+') {
+        // Addition
+        cout << "Result: " << num1 + num2 << " (Adding to the bankroll)" << endl;
+    } 
+    else if (op == '-') {
+        // Subtraction
+        cout << "Result: " << num1 - num2 << " (Subtracting my fake friends)" << endl;
+    } 
+    else if (op == '*') {
+        // Multiplication
+        cout << "Result: " << num1 * num2 << " (Multiplying the platinum plaques)" << endl;
+    } 
+    else if (op == '/') {
+        // Division with Zero Resistance (The Patch)
+        if (num2 != 0) {
+            cout << "Result: " << num1 / num2 << " (Dividing the royalties)" << endl;
+        } else {
+            //  logic: Prevent the crash
+            cout << "ERROR: You can't divide by zero! That's a lifestyle violation." << endl;
+        }
+    } 
+    else {
+        cout << "Invalid Operator: Stick to the script!" << endl;
+    }
+
+    cout << "-----------------------------------" << endl;
+    return 0;
+}

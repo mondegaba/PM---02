@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main() {
+    int size = 4;
+
+    //  Create 
+    int* myArr = new int[size];
+
+    // Initialize 
+    for(int i = 0; i < size; i++) {
+        myArr[i] = (i + 1) * 100;
+        std::cout << "Element " << i << ": " << myArr[i] << std::endl;
+    }
+
+    // Delete 
+    delete[] myArr;
+
+    return 0;
+}

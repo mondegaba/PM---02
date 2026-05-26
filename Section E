@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int dice = 1; 
+
+  switch (dice) {
+    case 1:
+      cout << "Yhuu😢";
+      break;
+    case 2:
+      cout << "Mara";
+      break;
+    case 3:
+      cout << "Mmmh";
+      break;
+    case 4:
+      cout << "Weeeh";
+      break;
+    case 5:
+      cout << "YAASS";
+      break;
+    case 6:
+      cout << "Congratulations🎉🎉";
+      break;
+    
+    // The "Just in case" logic
+    default:
+      cout << "That's not a valid dice roll! 🎲";
+      break;
+  }
+
+  cout << endl; // Good practice to end with a new line
+  return 0;
+}

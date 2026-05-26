@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string> // Required for PA1205
+using namespace std;
+
+int main() {
+    //  Declare a char
+    char myChar;
+
+    //  Input char
+    cout << "Enter a character: ";
+    cin >> myChar;
+
+    //  Print char value
+    cout << "Character value: " << myChar << endl;
+
+    //  Print ASCII values
+    // We "cast" the char to an int to see the underlying number
+    cout << "ASCII value: " << (int)myChar << endl;
+
+    //  Convert char to string
+    // Method: Create a string of length 1 using the char
+    string myString(1, myChar);
+    cout << "Converted to string: " << myString << endl;
+
+    return 0;
+}

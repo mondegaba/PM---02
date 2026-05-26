@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stdexcept> // For standard exceptions
+using namespace std;
+
+int main() {
+    try {
+        int age = 17; // Changed to test the throw logic
+        if (age >= 18) {
+            cout << "Access granted - you are old enough." << endl;
+        } else {
+            // Throwing a standard exception is more descriptive than a number
+            throw runtime_error("UnderageAccessError");
+        }
+    }
+    catch (const runtime_error& e) {
+        // We can now print the specific error message
+        cout << "Access denied: " << e.what() << endl;
+        cout << "Error Code: 403" << endl;
+    }
+    catch (...) {
+        // This stays as a fallback for any other unknown errors
+        cout << "An unexpected error occurred." << endl;
+    }
+
+    return 0;
+}

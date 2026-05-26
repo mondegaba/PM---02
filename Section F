@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <algorithm> // Required for sort, min/max, search, fill
+#include <vector>
+
+using namespace std;
+
+int main() {
+    //Declare and Initialise
+    string cars[4] = {"Volvo", "BMW", "Ford", "Mazda"};
+
+    // Access elements/values via index
+    cout << "First car: " << cars[0] << endl;
+
+    // Looping through arrays ( Printing)
+    cout << "Full array: ";
+    for(int i = 0; i < 4; i++) {
+        cout << cars[i] << " ";
+    }
+    cout << endl;
+
+    // Use a pointer to an array
+    string* ptr = cars; 
+    cout << "Pointer access: " << *(ptr + 1) << endl; // Accesses "BMW"
+
+    // Find min and max (Alphabetical for strings)
+    string* minVal = min_element(cars, cars + 4);
+    string* maxVal = max_element(cars, cars + 4);
+    cout << "Min: " << *minVal << ", Max: " << *maxVal << endl;
+
+    //  Sort array
+    sort(cars, cars + 4);
+
+    // Copy an array
+    string carsCopy[4];
+    copy(begin(cars), end(cars), begin(carsCopy));
+
+    // Checking if arrays are equal
+    bool isEqual = equal(begin(cars), end(cars), begin(carsCopy));
+    cout << "Arrays equal? " << (isEqual ? "Yes" : "No") << endl;
+
+    // Search arrays
+    bool found = binary_search(cars, cars + 4, "Ford");
+
+    // Fill arrays (Sets all elements to "Tesla")
+    fill(cars, cars + 4, "Tesla");
+
+    // --- DYNAMIC OPERATIONS (Vectors) ---
+    // Note: Standard C++ arrays cannot change size. Use vector for these:
+    vector<string> v_cars = {"Volvo", "BMW"};
+    v_cars.push_back("Ford");      // Add element
+    v_cars.erase(v_cars.begin());  // Delete element
+
+    return 0;
+}

@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>    // Required for built-in math functions like sqrt()
+#include <string>
+using namespace std;
+
+// --- PA1803: Function Declaration / Prototype ---
+// This tells the compiler the function exists, its name, parameters, and return type.
+// It has NO body (no curly braces) and ends with a semicolon.
+void calculateCarSpeed(string model, double distance, double time);
+
+
+int main() {
+    string carModel = "Porsche 911";
+    double distanceTraveled = 300.5; // in kilometers
+    double timeTaken = 1.5;          // in hours
+
+    cout << "--- Invoking Built-in Functions ---" << endl;
+    double number = 64.0;
+    // sqrt() is a built-in function provided by the standard <cmath> library
+    double root = sqrt(number); 
+    cout << "The square root of " << number << " is: " << root << "\n\n";
+
+
+    cout << "---  Calling Functions and Passing Arguments ---" << endl;
+    // PA1802: We are invoking a custom, user-defined function.
+    // PA1804: This line structurally performs the function call.
+    // PA1805: We are explicitly passing three variables as arguments down to the function.
+    calculateCarSpeed(carModel, distanceTraveled, timeTaken);
+
+    return 0;
+}
+
+
+// --- PA1802: User-Defined Function Definition ---
+// This is where we write the actual structural body of the prototype declared above.
+void calculateCarSpeed(string model, double distance, double time) {
+    if (time <= 0) {
+        cout << "Time must be greater than zero." << endl;
+        return;
+    }
+    
+    double speed = distance / time;
+    cout << "The " << model << " traveled at an average speed of: " 
+         << speed << " km/h" << endl;
+}

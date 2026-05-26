@@ -1,0 +1,56 @@
+#include <iostream>
+#include <ctime>   // Header for time operations
+#include <iomanip> // For clean output styling
+using namespace std;
+
+int main() {
+    // --- PA1901: Compile date and time ---
+    // The compiler automatically fills these preprocessor macros at the exact second the binary is built.
+    cout << "--- Compile Date & Time ---" << endl;
+    cout << "This binary was compiled on: " << __DATE__ << " at " << __TIME__ << "\n\n";
+
+
+    // --- PA1903 & PA1904: Date and time now & print ---
+    cout << "---  Current Time Now ---" << endl;
+    time_t rawTimeNow;
+    time(&rawTimeNow); // Get raw epoch timestamp
+    cout << "Standard ctime output: " << ctime(&rawTimeNow); // Automatically prints with a trailing newline
+
+
+    // --- PA1905: Date and time format ---
+    cout << "\n---  Custom Date & Time Format ---" << endl;
+    // Convert raw time into a structure that breaks down year, month, day, etc.
+    struct tm* localTimeInfo = localtime(&rawTimeNow);
+    
+    char customBuffer[80];
+    // strftime formats time exactly how you want it using specific format specifiers:
+    // %Y = Year (4 digits), %m = Month (01-12), %d = Day (01-31), %X = Time (HH:MM:SS)
+    strftime(customBuffer, sizeof(customBuffer), "%Y-%m-%d %X", localTimeInfo);
+    cout << "Formatted (YYYY-MM-DD HH:MM:SS): " << customBuffer << endl;
+
+
+    // --- PA1902: Compare date and time ---
+    cout << "\n--- Comparing Two Timepoints ---" << endl;
+    
+    // Let's create an artificial past event to compare against (e.g., New Year's Day 2026)
+    struct tm pastTarget = {0}; 
+    pastTarget.tm_year = 2026 - 1900; // Years since 1900
+    pastTarget.tm_mon = 0;            // 0 = January
+    pastTarget.tm_mday = 1;           // 1st day of the month
+    
+    time_t rawPastTime = mktime(&pastTarget); // Convert back to an epoch timestamp
+    
+    // difftime(time1, time2) returns the difference in seconds (time1 - time2)
+    double secondsElapsed = difftime(rawTimeNow, rawPastTime);
+    
+    if (secondsElapsed > 0) {
+        cout << "The current time is LATER than January 1, 2026." << endl;
+        cout << "Seconds elapsed since then: " << fixed << setprecision(0) << secondsElapsed << " seconds." << endl;
+    } else if (secondsElapsed < 0) {
+        cout << "The current time is EARLIER than January 1, 2026." << endl;
+    } else {
+        cout << "Both timepoints are exactly identical!" << endl;
+    }
+
+    return 0;
+}

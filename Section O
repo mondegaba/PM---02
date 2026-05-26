@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string> // Added string header explicitly for safety
+using namespace std;
+
+class Car {        // Declared a class
+  public:          
+    string brand;  // Attribute (Member)
+    string model;  // Attribute (Member)
+    int year;      // Attribute (Member)
+    
+    Car(string x, string y, int z); // Constructor declaration
+    ~Car();                         //  Destructor declaration (Added)
+};
+
+//  Constructor definition outside the class
+Car::Car(string x, string y, int z) {
+  brand = x;
+  model = y;
+  year = z;
+}
+
+//  Destructor definition outside the class (Added)
+Car::~Car() {
+  // Usually used to free up memory. We will add a print statement to prove it runs!
+  cout << "Destructor called for: " << brand << " " << model << endl;
+}
+
+int main() {
+  //Creating multiple Car objects using the constructor
+  Car carObj1("Mercedes-Benz", "GLE 63's Coupe", 2026);
+  Car carObj2("Ford", "Mustang", 1969);
+
+  //  Access class members
+  cout << carObj1.brand << " " << carObj1.model << " " << carObj1.year << "\n";
+  cout << carObj2.brand << " " << carObj2.model << " " << carObj2.year << "\n";
+  
+  return 0; 
+  // When main() ends, objects go out of scope and the destructor is automatically called!
+}

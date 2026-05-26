@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+#include <bitset> // Used to show binary conversion clearly
+
+using namespace std;
+
+int main() {
+    // --- INTRO: THE SETTING ---
+    // Assignment Operators (Setting the stage)
+    string rapper = "Drake";
+    int bars = 16;
+    int heat = 100;
+    int opponentHeat = 80;
+
+    // --- VERSE 1: THE MATH (Arithmetic Operator) ---
+    int totalFire = bars + heat;       // Addition
+    int micDrop = heat - 10;           // Subtraction
+    int flowRate = (bars * 2) / 4;     // Multi & Div
+    int rhythmMod = 10 % 3;            // Modulo (The leftover beat)
+
+    // --- VERSE 2: THE COMPARISON (Relational Operator) ---
+    bool isWinning = (heat > opponentHeat); 
+    bool isGoat = (heat == 100);
+
+    // --- VERSE 3: THE LOGIC ( Logical Operator) ---
+    // You need heat AND bars to win
+    bool tripleThreat = (heat > 90 && bars >= 16); 
+    bool stillRapping = (heat > 0 || !isWinning); // OR and NOT (!)
+
+    // --- VERSE 4: THE HACKER BARS (Bitwise Operator) ---
+    // Shifting bits like shifting the pitch
+    int beatShift = 1 << 3;    // Left shift (Binary 1 becomes 8)
+    int bitwiseVibe = 5 & 3;   // Bitwise AND 
+
+    // --- VERSE 5: THE TECHNICALS  ---
+    int memoryWeight = sizeof(heat);  //  Size of operator
+    int stageX, stageY;
+    stageX = (stageY = 5, stageY + 10); // Comma operator (set Y, then X)
+
+    // --- VERSE 6: THE FINAL BLOW  ---
+    // Conditional (Ternary) Operator
+    // condition ? value_if_true : value_if_false
+    string crowdReaction = (heat > 90) ? "🔥🔥🔥" : "🔇";
+
+    //  Binary to Decimal (The secret code)
+    int binaryCode = 0b1100; // Binary for 12
+
+    // --- THE PERFORMANCE ---
+    cout << "🎤 [RAP BATTLE LOG: " << rapper << " vs Kendrick Lamar]" << endl;
+    cout << "-----------------------------------------------" << endl;
+    cout << "Crowd Status: " << crowdReaction << endl;
+    cout << "Total Stats:  " << totalFire << endl;
+    cout << "Winning?     " << (isWinning ? "True" : "False") << endl;
+    cout << "Logic Check:  " << (tripleThreat ? "God Mode" : "Normal") << endl;
+    cout << "Bit Shift:    " << beatShift << endl;
+    cout << "Int Memory:   " << memoryWeight << endl;
+    cout << "Secret Code:  " << binaryCode << " ( Binary to Dec)" << endl;
+    cout << "-----------------------------------------------" << endl;
+
+    return 0;
+}

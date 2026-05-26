@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Pass by reference (const vector<int>&) avoids making unnecessary memory copies
+double calculateAverageAge(const vector<int>& ages) {
+    // FIX 1 (PA2001): Initialized totalAge to 0 so it doesn't hold random memory garbage
+    int totalAge = 0; 
+    
+    // FIX 2 (PA2001): Fixed syntax and changed '<=' to '<'. 
+    // The loop now stops safely before reaching out-of-bounds memory.
+    for (size_t i = 0; i < ages.size(); i++) { 
+        totalAge += ages[i];
+    }
+    
+    // FIX 3 (PA2001): Cast totalAge to a double before dividing. 
+    // This stops C++ from cutting off decimal values (integer truncation).
+    return static_cast<double>(totalAge) / ages.size(); 
+}
+
+int main() {
+    vector<int> driverAges = {22, 45, 30, 19}; // Sum total = 116
+
+    // PA2003: Calling and running the verified code to check our fixes
+    double average = calculateAverageAge(driverAges);
+    
+    // The program now flows smoothly from start to finish and prints: 29
+    cout << "Average age: " << average << endl;
+
+    return 0;
+}

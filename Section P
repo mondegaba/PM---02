@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+  public:
+    string brand;
+    string model;
+    int year;
+
+    Car(string x, string y, int z) : brand(x), model(y), year(z) {}
+
+    // --- PA1601: Overloading the Equality Operator (==) ---
+    // This member function lets us compare two Car objects directly.
+    bool operator==(const Car &other) const {
+        // Two cars are equal if their brand, model, and year all match
+        return (brand == other.brand && model == other.model && year == other.year);
+    }
+};
+
+// --- PA1601: Overloading the Stream Insertion Operator (<<) ---
+// This standalone function lets us pass a Car object directly to cout.
+ostream& operator<<(ostream &os, const Car &c) {
+    os << c.brand << " " << c.model << " (" << c.year << ")";
+    return os; // Return the stream so we can chain multiple << operators
+}
+
+int main() {
+    Car car1("Ford", "Mustang", 1969);
+    Car car2("Ford", "Mustang", 1969);
+    Car car3("BMW", "X5", 1999);
+
+    // 1. Testing the overloaded << operator
+    cout << "--- Overloaded << Operator ---" << endl;
+    cout << "Car 1 Details: " << car1 << endl;
+    cout << "Car 3 Details: " << car3 << endl;
+
+    // 2. Testing the overloaded == operator
+    cout << "\n--- Overloaded == Operator ---" << endl;
+    if (car1 == car2) {
+        cout << "Car 1 and Car 2 are the exact same car model!" << endl;
+    } else {
+        cout << "Car 1 and Car 2 are different." << endl;
+    }
+
+    if (car1 == car3) {
+        cout << "Car 1 and Car 3 are the same." << endl;
+    } else {
+        cout << "Car 1 and Car 3 are different car models!" << endl;
+    }
+
+    return 0;
+}

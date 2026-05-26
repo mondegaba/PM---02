@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//  Defining the structure by combining different data items
+struct car { 
+    string brand;
+    string model;
+    int year;
+} myCar1, myCar2; //  Creating global instances right here
+
+//  Function that takes a struct as an argument (Passed by reference for efficiency)
+void printCarDetails(const car &c) {
+    cout << c.brand << " " << c.model << " " << c.year << endl;
+}
+
+int main() {
+    // --- Existing Functionality ---
+    myCar1.brand = "Mercedes-Benz";
+    myCar1.model = "GLE 63s Coupe";
+    myCar1.year = 2026;
+
+    myCar2.brand = "Ford";
+    myCar2.model = "Mustang";
+    myCar2.year = 1969;
+
+    // --- Initialize a structure instance in one line ---
+    car myCar3 = {"Porsche", "911 GT3 RS", 2025};
+
+    // --- PA1405: Create a pointer to a structure ---
+    car* carPtr = &myCar1; // Pointer stores the address of myCar1
+
+    // Displaying the outputs using the different methods:
+    cout << "--- Standard Access ---" << endl;
+    cout << myCar1.brand << " " << myCar1.model << " " << myCar1.year << endl;
+    cout << myCar2.brand << " " << myCar2.model << " " << myCar2.year << endl;
+
+    cout << "\n--- Pointer Access using Arrow '->' ---" << endl;
+    // We use -> to access members when dealing with a pointer
+    cout << carPtr->brand << " " << carPtr->model << " " << carPtr->year << endl;
+
+    cout << "\n--- Passed to Function as an Argument  ---" << endl;
+    printCarDetails(myCar3); // Passing our initialized 3rd car to the function
+
+    return 0;
+}

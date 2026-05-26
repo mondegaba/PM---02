@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// PA0801: Enum for Game Difficulty
+enum Difficulty {
+    NOOB = 1,
+    PRO = 2,
+    LEGENDARY = 3
+};
+
+// PA0803: Function that swaps two values using references
+// Think of this as swapping your "Main Weapon" with your "Secondary Weapon"
+void swapGear(int &weaponA, int &weaponB) {
+    int temp = weaponA;
+    weaponA = weaponB;
+    weaponB = temp;
+}
+
+// PA0804: Return a reference type variable
+// This lets us access and change the "World Level" directly
+Difficulty worldLevel = PRO; 
+Difficulty& accessWorldLevel() {
+    return worldLevel;
+}
+
+int main() {
+    // --- SETUP ---
+    Difficulty playerSkill =PRO;
+
+    // PA0802: Create a reference variable
+    // 'skillRef' is just a nickname for 'playerSkill'
+    Difficulty &skillRef = playerSkill; 
+
+    cout << "--- 🛡️ WELCOME TO THE ARENA PAPA 🛡️ ---" << endl;
+
+    // 1. Using the Switch (Your original logic)
+    cout << "Current Player Skill: ";
+    switch (skillRef) {
+        case NOOB:      cout << "Noob (Keep practicing shem🫂!)" << endl; break;
+        case PRO:       cout << "Pro (Ngwanyana Yass🚀✨!)" << endl; break;
+        case LEGENDARY: cout << "Legendary (God Mode!🔥)" << endl; break;
+    }
+
+    // 2. Swapping Gear (PA0803)
+    int swordDamage = 50;
+    int axeDamage = 120;
+    cout << "\nEquipped: Sword (" << swordDamage << " dmg). Stowed: Axe (" << axeDamage << " dmg)." << endl;
+    
+    cout << "🔄 Swapping weapons..." << endl;
+    swapGear(swordDamage, axeDamage);
+    
+    cout << "Equipped: Axe (" << swordDamage << " dmg). Stowed: Sword (" << axeDamage << " dmg)." << endl;
+
+    // 3. Modifying through Reference Return (PA0804)
+    cout << "\nCurrent World Level is: " << worldLevel << endl;
+    
+    //  I have used the function to reach in and change the value directly!
+    accessWorldLevel() = PRO ; 
+    
+    cout << "🔥 Warning: World Level has peaked to: " << worldLevel << "!" << endl;
+    cout << "\n------- GOOD LUCK, PLAYER 1!-------" << endl;
+
+    return 0;
+}

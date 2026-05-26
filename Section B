@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>   // Required for the string class
+#include <cstring>  // Required for C-style string functions
+
+using namespace std;
+
+int main() {
+    //  Declare a C-style character string (Legacy Enchantment)
+    char spellName[] = "Her Loss"; 
+
+    //  Declare a string class type (Modern Mana)
+    string heroName = "The boy doing things";
+
+    //  Access string values 
+    // Remember: [0] is the first character!
+    char initial = heroName[0]; // This correctly gets 'T'
+
+    //  Use string functions
+    int spellPower = strlen(spellName); // C-style function
+    int heroNameLength = heroName.length(); // String class function
+
+    // Outputting the adventure log
+    cout << "--- QUEST LOG ---" << endl;
+    cout << "Hero: " << heroName << " (Length: " << heroNameLength << ")" << endl;
+    cout << "Hero Initial: " << initial << endl;
+    cout << "Equipped Spell: " << spellName << " (Power: " << spellPower << ")" << endl;
+    cout << "-----------------" << endl;
+
+    return 0;
+}

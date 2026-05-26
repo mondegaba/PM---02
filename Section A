@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string> // Required to use the string data type
+
+using namespace std;
+
+int main() {
+     //  Declare and Initialize variables (Assigning values)
+    string name = "Drake";
+    int age = 35;          
+    double height = 5.1;
+
+    // Output of the data above using cout
+    cout << "My name is " << name << ", I am " << age 
+         << " years old and my height is " << height 
+         << " feet tall." << endl;
+
+    //  Exit the program
+    return 0;
+}

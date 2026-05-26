@@ -1,0 +1,62 @@
+#include <iostream>
+#include <list>     // Required header for using std::list
+#include <string>
+using namespace std;
+
+int main() {
+    // Creating a standard list that will hold string data types (car brands)
+    list<string> carBrands;
+
+    // Inserting elements at the end and front of the list
+    carBrands.push_back("Ford");        // List: [Ford]
+    carBrands.push_back("BMW");         // List: [Ford, BMW]
+    carBrands.push_front("Mercedes");   // List: [Mercedes, Ford, BMW]
+
+    cout << "--- Initial List after Basic Insertion ---" << endl;
+    for (const string& brand : carBrands) {
+        cout << brand << " -> ";
+    }
+    cout << "END\n" << endl;
+
+    // Removing items from the tail or head directly
+    carBrands.pop_front(); // Removes "Mercedes" -> List: [Ford, BMW]
+    carBrands.pop_back();  // Removes "BMW"      -> List: [Ford]
+
+    cout << "--- List after Basic Deletions (pop_front & pop_back) ---" << endl;
+    for (const string& brand : carBrands) {
+        cout << brand << " -> ";
+    }
+    cout << "END\n" << endl;
+
+    // Repopulating quickly for the next task
+    carBrands.push_back("Porsche");
+    carBrands.push_back("Toyota"); // List is now: [Ford, Porsche, Toyota]
+
+   
+    // Because a list isn't indexed like an array, we use 'iterators' (pointers) to navigate.
+    list<string>::iterator it = carBrands.begin(); 
+    
+    // Move iterator to the second position (index 1)
+    it++; 
+
+    // 1. Insert ANYWHERE: Let's insert "Audi" right before "Porsche"
+    carBrands.insert(it, "Audi"); // List becomes: [Ford, Audi, Porsche, Toyota]
+
+    cout << "--- List after Middle Insertion ---" << endl;
+    for (const string& brand : carBrands) {
+        cout << brand << " -> ";
+    }
+    cout << "END\n" << endl;
+
+    // 2. Remove ANYWHERE: Let's wipe out "Porsche". 
+    // Currently, our iterator 'it' is still pointing exactly at "Porsche".
+    carBrands.erase(it); // List becomes: [Ford, Audi, Toyota]
+
+    cout << "--- Final List after Middle Removal ---" << endl;
+    for (const string& brand : carBrands) {
+        cout << brand << " -> ";
+    }
+    cout << "END\n" << endl;
+
+    return 0;
+}
